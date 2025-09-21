@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Icons</title>
+</head>
+<body>
+    <canvas id="canvas192" width="192" height="192" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas512" width="512" height="512" style="border: 1px solid black;"></canvas>
+    
+    <script>
+        // Generate 192x192 icon
+        const canvas192 = document.getElementById('canvas192');
+        const ctx192 = canvas192.getContext('2d');
+        
+        // Black background
+        ctx192.fillStyle = '#000000';
+        ctx192.fillRect(0, 0, 192, 192);
+        
+        // White play button
+        ctx192.fillStyle = '#ffffff';
+        ctx192.beginPath();
+        ctx192.moveTo(70, 50);
+        ctx192.lineTo(70, 142);
+        ctx192.lineTo(140, 96);
+        ctx192.closePath();
+        ctx192.fill();
+        
+        // Generate 512x512 icon
+        const canvas512 = document.getElementById('canvas512');
+        const ctx512 = canvas512.getContext('2d');
+        
+        // Black background
+        ctx512.fillStyle = '#000000';
+        ctx512.fillRect(0, 0, 512, 512);
+        
+        // White play button
+        ctx512.fillStyle = '#ffffff';
+        ctx512.beginPath();
+        ctx512.moveTo(180, 130);
+        ctx512.lineTo(180, 382);
+        ctx512.lineTo(380, 256);
+        ctx512.closePath();
+        ctx512.fill();
+        
+        // Download links
+        setTimeout(() => {
+            const link192 = document.createElement('a');
+            link192.download = 'icon-192x192.png';
+            link192.href = canvas192.toDataURL();
+            document.body.appendChild(link192);
+            
+            const link512 = document.createElement('a');
+            link512.download = 'icon-512x512.png';
+            link512.href = canvas512.toDataURL();
+            document.body.appendChild(link512);
+            
+            console.log('Right-click on the canvases and save as PNG files');
+        }, 100);
+    </script>
+</body>
+</html>
